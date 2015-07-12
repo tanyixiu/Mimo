@@ -1,4 +1,4 @@
-package com.tanyixiu.widgets.residemenu;
+package com.tanyixiu.widgets.slidedrawer;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -9,17 +9,17 @@ import android.view.ViewGroup;
 /**
  * Created by tanyixiu on 2015/7/11.
  */
-class TouchDisableView extends ViewGroup {
+class SlideDrawerAttacher extends ViewGroup {
 
     private View mContent;
 
     private boolean mTouchDisabled = false;
 
-    public TouchDisableView(Context context) {
+    public SlideDrawerAttacher(Context context) {
         this(context, null);
     }
 
-    public TouchDisableView(Context context, AttributeSet attrs) {
+    public SlideDrawerAttacher(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 

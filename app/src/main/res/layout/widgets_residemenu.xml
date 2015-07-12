@@ -7,48 +7,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
-        android:scaleType="centerCrop" />
-
-    <ImageView
-        android:id="@+id/iv_shadow"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/widgets_residemenu_shadow"
-        android:scaleType="fitXY" />
+        android:scaleType="centerCrop"/>
 
     <ScrollView
-        android:id="@+id/sv_left_menu"
+        android:id="@+id/sv_menu"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="left|center_vertical"
         android:paddingLeft="30dp"
-        android:scrollbars="none">
-
-        <LinearLayout
-            android:id="@+id/layout_left_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-        </LinearLayout>
-    </ScrollView>
-
-    <ScrollView
-        android:id="@+id/sv_right_menu"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|center_vertical"
-        android:paddingRight="30dp"
-        android:scrollbars="none">
-
-        <LinearLayout
-            android:id="@+id/layout_right_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="vertical">
-
-        </LinearLayout>
-    </ScrollView>
+        android:scrollbars="none"/>
 
 </merge>
