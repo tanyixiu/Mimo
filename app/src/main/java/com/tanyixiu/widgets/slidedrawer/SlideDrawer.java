@@ -47,7 +47,7 @@ public class SlideDrawer extends FrameLayout {
     }
 
     private void initViews(Context context) {
-        LayoutInflater.from(context).inflate(R.layout.widgets_residemenu, this);
+        LayoutInflater.from(context).inflate(R.layout.widgets_slidedrawer, this);
 
         mScrollViewMenu = (ScrollView) findViewById(R.id.sv_menu);
         mImageViewBackground = (ImageView) findViewById(R.id.iv_background);
@@ -86,10 +86,10 @@ public class SlideDrawer extends FrameLayout {
         return menuListener;
     }
 
-    public void openMenu() {
+    public void openSlideDrawer() {
 
         isOpened = true;
-        setScalePivot();
+        setPivot();
         AnimatorSet scaleDown_activity = buildScaleDownAnimation(mSlideDrawerAttacher,
                 mScaleValue, mScaleValue);
         AnimatorSet alpha_menu = buildMenuAnimation(mScrollViewMenu, 1.0f);
@@ -98,7 +98,7 @@ public class SlideDrawer extends FrameLayout {
         scaleDown_activity.start();
     }
 
-    public void closeMenu() {
+    public void closeSlideDrawer() {
 
         isOpened = false;
         AnimatorSet scaleUp_activity = buildScaleUpAnimation(mSlideDrawerAttacher, 1.0f, 1.0f);
@@ -108,13 +108,16 @@ public class SlideDrawer extends FrameLayout {
         scaleUp_activity.start();
     }
 
-    private void setScalePivot() {
+    private void setPivot() {
         DisplayMetrics displayMetrics = getScreenDisplayMetrics();
         float pivotX = displayMetrics.widthPixels * 1.5f;
         float pivotY = displayMetrics.heightPixels * 0.5f;
 
         mSlideDrawerAttacher.setPivotX(pivotX);
         mSlideDrawerAttacher.setPivotY(pivotY);
+
+        mScrollViewMenu.setPivotX(0);
+        mScrollViewMenu.setPivotY(0);
     }
 
     public boolean isOpened() {
@@ -124,7 +127,7 @@ public class SlideDrawer extends FrameLayout {
     private OnClickListener viewActivityOnClickListener = new OnClickListener() {
         @Override
         public void onClick(View view) {
-            if (isOpened()) closeMenu();
+            if (isOpened()) closeSlideDrawer();
         }
     };
 
@@ -183,7 +186,8 @@ public class SlideDrawer extends FrameLayout {
 
         AnimatorSet alphaAnimation = new AnimatorSet();
         alphaAnimation.playTogether(
-                ObjectAnimator.ofFloat(target, "alpha", alpha)
+                ObjectAnimator.ofFloat(target, "alpha", alpha),
+                ObjectAnimator.ofFloat(target, "rotationY", (1 - alpha) * 90.0f)
         );
 
         alphaAnimation.setDuration(250);
@@ -207,7 +211,7 @@ public class SlideDrawer extends FrameLayout {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         float currentActivityScaleX = mSlideDrawerAttacher.getScaleX();
         if (currentActivityScaleX == 1.0f) {
-            setScalePivot();
+            setPivot();
         }
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
@@ -237,9 +241,12 @@ public class SlideDrawer extends FrameLayout {
                         showScrollViewMenu(mScrollViewMenu);
                     }
                     float targetScale = getTargetScale(ev.getRawX());
+                    float targetAlpha = (1 - targetScale) * 2.0f;
+                    float targetRotaion = (1 - targetAlpha) * 90.0f;
                     mSlideDrawerAttacher.setScaleX(targetScale);
                     mSlideDrawerAttacher.setScaleY(targetScale);
-                    mScrollViewMenu.setAlpha((1 - targetScale) * 2.0f);
+                    mScrollViewMenu.setAlpha(targetAlpha);
+                    mScrollViewMenu.setRotationY(targetRotaion);
 
                     lastRawX = ev.getRawX();
                     return true;
@@ -255,14 +262,14 @@ public class SlideDrawer extends FrameLayout {
                 pressedState = PRESSED_DONE;
                 if (isOpened()) {
                     if (currentActivityScaleX > 0.56f)
-                        closeMenu();
+                        closeSlideDrawer();
                     else
-                        openMenu();
+                        openSlideDrawer();
                 } else {
                     if (currentActivityScaleX < 0.94f) {
-                        openMenu();
+                        openSlideDrawer();
                     } else {
-                        closeMenu();
+                        closeSlideDrawer();
                     }
                 }
                 break;
