@@ -12,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -189,7 +190,7 @@ public class SlideDrawer extends FrameLayout {
                 ObjectAnimator.ofFloat(target, "alpha", alpha),
                 ObjectAnimator.ofFloat(target, "rotationY", (1 - alpha) * 90.0f)
         );
-
+        alphaAnimation.setInterpolator(new AccelerateInterpolator());
         alphaAnimation.setDuration(250);
         return alphaAnimation;
     }
@@ -243,6 +244,7 @@ public class SlideDrawer extends FrameLayout {
                     float targetScale = getTargetScale(ev.getRawX());
                     float targetAlpha = (1 - targetScale) * 2.0f;
                     float targetRotaion = (1 - targetAlpha) * 90.0f;
+
                     mSlideDrawerAttacher.setScaleX(targetScale);
                     mSlideDrawerAttacher.setScaleY(targetScale);
                     mScrollViewMenu.setAlpha(targetAlpha);

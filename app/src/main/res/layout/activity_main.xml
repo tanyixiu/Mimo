@@ -2,6 +2,7 @@
 <LinearLayout
     android:id="@+id/linearlayout_activity_main"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mimo="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_sys_title_bar"
@@ -9,16 +10,41 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:gravity="center"
-        android:singleLine="true"
-        android:text="Menu Title"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"/>
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
 
+        <ImageView
+            android:id="@+id/main_title_more"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_more_vert_white_24dp"/>
+
+        <com.tanyixiu.widgets.circleimageview.CircleImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="-5dp"
+            android:layout_toRightOf="@id/main_title_more"
+            android:src="@drawable/photo"
+            mimo:border_color="@color/color_bkg_white"
+            mimo:border_width="1dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="Mimo"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"/>
+    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/main_fragment"
