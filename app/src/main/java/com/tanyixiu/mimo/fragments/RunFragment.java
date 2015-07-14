@@ -1,7 +1,9 @@
 package com.tanyixiu.mimo.fragments;
 
-import android.app.Fragment;
+
 import android.os.Bundle;
+import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,19 +11,18 @@ import android.view.ViewGroup;
 import com.tanyixiu.mimo.R;
 
 /**
- * Created by tanyixiu on 2015/7/11.
+ * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class RunFragment extends Fragment {
 
-    public static HomeFragment getNewInstance() {
-        return new HomeFragment();
+    public static RunFragment getNewInstance() {
+        return new RunFragment();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View parentView = inflater.inflate(R.layout.fragment_home, container, false);
-        return parentView;
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_run, container, false);
     }
-
 }

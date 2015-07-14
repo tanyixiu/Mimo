@@ -233,7 +233,7 @@ public class SlideDrawer extends FrameLayout {
                         pressedState = PRESSED_MOVE_VERTICAL;
                         break;
                     }
-                    if (Math.abs(xOffset) > 5) {
+                    if (Math.abs(xOffset) > 15) {
                         pressedState = PRESSED_MOVE_HORIZONTAL;
                         ev.setAction(MotionEvent.ACTION_CANCEL);
                     }

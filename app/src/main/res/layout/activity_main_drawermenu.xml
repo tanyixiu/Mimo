@@ -20,7 +20,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:src="@drawable/photo"
-            mimo:border_color="@color/color_bkg_white"
+            mimo:border_color="@color/bkg_color_white"
             mimo:border_width="1dp" />
 
         <TextView
@@ -31,7 +31,7 @@
             android:layout_toRightOf="@id/img_head"
             android:gravity="center"
             android:text="YI"
-            android:textColor="@color/color_text_white"
+            android:textColor="@color/txt_color_white"
             android:textSize="24sp" />
     </RelativeLayout>
 

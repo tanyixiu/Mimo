@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="color_sys_title_bar">@android:color/holo_green_light</color>
-    <color name="color_green">#64DD17</color>
-    <color name="color_text_white">@android:color/white</color>
+    <color name="bkg_color_green_light">@android:color/holo_green_light</color>
+    <color name="bkg_color_green_dark">@android:color/holo_green_dark</color>
+    <color name="bkg_color_white">@android:color/white</color>
 
-    <color name="color_bkg_white">@android:color/white</color>
+    <color name="txt_color_white">@android:color/white</color>
+    <color name="txt_color_black">@android:color/black</color>
 </resources>
