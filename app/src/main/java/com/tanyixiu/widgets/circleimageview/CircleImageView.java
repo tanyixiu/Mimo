@@ -40,8 +40,8 @@ public class CircleImageView extends ImageView {
     private final RectF mBorderRect = new RectF();
 
     private final Matrix mShaderMatrix = new Matrix();
-    private final Paint mBitmapPaint = new Paint();
-    private final Paint mBorderPaint = new Paint();
+    private final Paint mBitmapPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final Paint mBorderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     private int mBorderColor = DEFAULT_BORDER_COLOR;
     private int mBorderWidth = DEFAULT_BORDER_WIDTH;
@@ -240,7 +240,7 @@ public class CircleImageView extends ImageView {
             return null;
         }
     }
-
+    
     private void setup() {
         if (!mReady) {
             mSetupPending = true;

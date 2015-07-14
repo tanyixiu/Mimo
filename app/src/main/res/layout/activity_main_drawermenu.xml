@@ -1,98 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:gravity="center_vertical"
-              android:orientation="vertical">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:paddingBottom="80dp"
+    android:paddingLeft="30dp"
+    android:paddingTop="80dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.tanyixiu.widgets.circleimageview.CircleImageView
+        <com.tanyixiu.widgets.circleimageview.CircleImageView xmlns:mimo="http://schemas.android.com/apk/res-auto"
             android:id="@+id/img_head"
-            xmlns:mimo="http://schemas.android.com/apk/res-auto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
             android:src="@drawable/photo"
             mimo:border_color="@color/color_bkg_white"
-            mimo:border_width="1dp"/>
+            mimo:border_width="1dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
             android:layout_toRightOf="@id/img_head"
             android:gravity="center"
             android:text="YI"
-            android:textColor="@color/color_text_white"/>
+            android:textColor="@color/color_text_white"
+            android:textSize="24sp" />
     </RelativeLayout>
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:drawableLeft="@drawable/icon_home"
-        android:gravity="left|center_vertical"
-        android:padding="10dp"
-        android:text="Home"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"/>
+        android:layout_height="match_parent"
+        android:paddingBottom="30dp"
+        android:paddingTop="30dp"
+        android:scrollbars="none">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:drawableLeft="@drawable/icon_home"
-        android:gravity="left|center_vertical"
-        android:padding="10dp"
-        android:text="Home"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:scrollbars="none">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:drawableLeft="@drawable/icon_home"
-        android:gravity="left|center_vertical"
-        android:padding="10dp"
-        android:text="Home"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_home_white_36dp"
+                android:drawablePadding="10dp"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="Home"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:drawableLeft="@drawable/icon_home"
-        android:gravity="left|center_vertical"
-        android:padding="10dp"
-        android:text="Home"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:drawableLeft="@drawable/icon_home"
-        android:gravity="left|center_vertical"
-        android:padding="10dp"
-        android:text="Home"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_grade_white_36dp"
+                android:drawablePadding="10dp"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="Favor"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:drawableLeft="@drawable/icon_home"
-        android:gravity="left|center_vertical"
-        android:padding="10dp"
-        android:text="Home"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_photo_white_36dp"
+                android:drawablePadding="10dp"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="Photo"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_settings_white_36dp"
+                android:drawablePadding="10dp"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="Setting"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_power_settings_new_white_36dp"
+                android:drawablePadding="10dp"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="Exit"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

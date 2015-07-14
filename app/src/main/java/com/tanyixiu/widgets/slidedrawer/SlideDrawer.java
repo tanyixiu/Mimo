@@ -31,7 +31,7 @@ public class SlideDrawer extends FrameLayout {
     private static final int PRESSED_MOVE_VERTICAL = 4;
 
     private View mMenuView;
-    private ScrollView mScrollViewMenu;
+    private ViewGroup mScrollViewMenu;
     private ImageView mImageViewBackground;
     private SlideDrawerAttacher mSlideDrawerAttacher;
 
@@ -50,7 +50,7 @@ public class SlideDrawer extends FrameLayout {
     private void initViews(Context context) {
         LayoutInflater.from(context).inflate(R.layout.widgets_slidedrawer, this);
 
-        mScrollViewMenu = (ScrollView) findViewById(R.id.sv_menu);
+        mScrollViewMenu = (ViewGroup) findViewById(R.id.sv_menu);
         mImageViewBackground = (ImageView) findViewById(R.id.iv_background);
     }
 
@@ -229,7 +229,7 @@ public class SlideDrawer extends FrameLayout {
                 int yOffset = (int) (ev.getY() - lastActionDownY);
 
                 if (pressedState == PRESSED_DOWN) {
-                    if (Math.abs(yOffset) > 100) {
+                    if (Math.abs(yOffset) > 15) {
                         pressedState = PRESSED_MOVE_VERTICAL;
                         break;
                     }
@@ -299,13 +299,13 @@ public class SlideDrawer extends FrameLayout {
         void closeDrawer();
     }
 
-    private void showScrollViewMenu(ScrollView scrollViewMenu) {
+    private void showScrollViewMenu(ViewGroup scrollViewMenu) {
         if (scrollViewMenu != null && scrollViewMenu.getParent() == null) {
             addView(scrollViewMenu);
         }
     }
 
-    private void hideScrollViewMenu(ScrollView scrollViewMenu) {
+    private void hideScrollViewMenu(ViewGroup scrollViewMenu) {
         if (scrollViewMenu != null && scrollViewMenu.getParent() != null) {
             removeView(scrollViewMenu);
         }

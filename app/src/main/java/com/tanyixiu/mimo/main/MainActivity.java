@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.tanyixiu.mimo.R;
 import com.tanyixiu.mimo.activities.BaseActivity;
@@ -15,6 +16,7 @@ import com.tanyixiu.widgets.slidedrawer.SlideDrawer;
 public class MainActivity extends BaseActivity {
 
     private SlideDrawer mSlideDrawer;
+    private RelativeLayout main_menu_toggle;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
