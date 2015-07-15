@@ -1,43 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/relativelayout_fragment_home"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    android:padding="20dp">
 
     <TextView
         android:id="@+id/one_tv_num"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="VOL.1010"/>
+        android:layout_height="wrap_content" />
 
-    <ImageView
+    <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/one_img_show"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/one_tv_num"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/test1010"/>
+        android:adjustViewBounds="true" />
 
     <TextView
-        android:id="@+id/one_tv_picname"
+        android:id="@+id/one_tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@id/one_img_show"
-        android:layout_marginTop="20dp"
-        android:text="孤舟"/>
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:id="@+id/one_tv_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/one_tv_picname"
-        android:layout_marginTop="5dp"
-        android:text="方培鑫 作品"/>
+        android:layout_below="@id/one_tv_title"
+        android:layout_marginTop="3dp" />
 
     <TextView
         android:id="@+id/one_tv_day"
@@ -46,32 +42,30 @@
         android:layout_below="@id/one_tv_author"
         android:layout_marginRight="30dp"
         android:layout_marginTop="20dp"
-        android:text="14"
-        android:textColor="@android:color/holo_blue_bright"
+        android:textColor="@color/txt_color_blue"
         android:textSize="35sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
 
     <TextView
+        android:id="@+id/one_tv_quote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/one_tv_day"
         android:layout_below="@id/one_tv_author"
         android:layout_toRightOf="@id/one_tv_day"
+        android:layout_marginTop="30dp"
         android:background="@drawable/one_home_page_text"
         android:gravity="center_vertical"
         android:letterSpacing="2"
         android:lineSpacingExtra="5dp"
-        android:text="很久以后才明白，想让你记住我，并不是需要在告别的时候大声念三遍我的名字，而是拼命向上与你等高，让你一侧过头一转身就会知道我是谁。by 张瑞琪"
         android:textColor="@color/txt_color_white"
-        android:textSize="14sp"/>
+        android:textSize="14sp" />
 
     <TextView
+        android:id="@+id/one_tv_monthyear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/one_tv_day"
-        android:layout_marginTop="10dp"
-        android:gravity="center_horizontal"
-        android:text="July,2015"/>
+        android:gravity="center_horizontal" />
 
 </RelativeLayout>

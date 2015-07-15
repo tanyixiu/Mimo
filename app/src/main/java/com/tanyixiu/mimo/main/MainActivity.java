@@ -29,7 +29,6 @@ public class MainActivity extends BaseActivity {
     private SlideDrawer mSlideDrawer;
     private RelativeLayout main_menu_toggle;
     private TabHolder mTabHolder;
-    private RequestQueue mRequestQueue;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,23 +38,6 @@ public class MainActivity extends BaseActivity {
         initView(rootView);
         setUpMenu();
 
-        test();
-    }
-
-    private void test() {
-        mRequestQueue = Volley.newRequestQueue(this);
-        StringRequest request = new StringRequest("http://caodan.org/", new Response.Listener<String>() {
-            @Override
-            public void onResponse(String s) {
-                Log.d("YI", s);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
-                Log.d("YI", "request error:" + volleyError.getMessage());
-            }
-        });
-        mRequestQueue.add(request);
     }
 
 
