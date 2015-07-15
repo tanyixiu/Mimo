@@ -3,7 +3,6 @@ package com.tanyixiu.mimo.main;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,9 +10,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.tanyixiu.mimo.R;
 import com.tanyixiu.mimo.activities.BaseActivity;
@@ -29,21 +25,26 @@ public class MainActivity extends BaseActivity {
     private SlideDrawer mSlideDrawer;
     private RelativeLayout main_menu_toggle;
     private TabHolder mTabHolder;
+    private RequestQueue mRequestQueue;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View rootView = LayoutInflater.from(this).inflate(R.layout.activity_main, null);
+        mRequestQueue = Volley.newRequestQueue(this);
         setContentView(rootView);
         initView(rootView);
         setUpMenu();
-
     }
 
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         return mSlideDrawer.dispatchTouchEvent(ev);
+    }
+
+    public RequestQueue getRequestQueue() {
+        return mRequestQueue;
     }
 
     private TabHolderOnClickListener mTabHolderOnClickListener =

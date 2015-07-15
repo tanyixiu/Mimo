@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
     android:id="@+id/relativelayout_fragment_home"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp">
@@ -8,16 +9,17 @@
     <TextView
         android:id="@+id/one_tv_num"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"/>
 
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/one_img_show"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="250dp"
         android:layout_below="@id/one_tv_num"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:adjustViewBounds="true" />
+        android:adjustViewBounds="true"
+        android:src="@drawable/test1010"/>
 
     <TextView
         android:id="@+id/one_tv_title"
@@ -25,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@id/one_img_show"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"/>
 
     <TextView
         android:id="@+id/one_tv_author"
@@ -33,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@id/one_tv_title"
-        android:layout_marginTop="3dp" />
+        android:layout_marginTop="3dp"/>
 
     <TextView
         android:id="@+id/one_tv_day"
@@ -44,7 +46,7 @@
         android:layout_marginTop="20dp"
         android:textColor="@color/txt_color_blue"
         android:textSize="35sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 
 
     <TextView
@@ -52,20 +54,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/one_tv_author"
-        android:layout_toRightOf="@id/one_tv_day"
         android:layout_marginTop="30dp"
+        android:layout_toRightOf="@id/one_tv_day"
         android:background="@drawable/one_home_page_text"
         android:gravity="center_vertical"
         android:letterSpacing="2"
         android:lineSpacingExtra="5dp"
         android:textColor="@color/txt_color_white"
-        android:textSize="14sp" />
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/one_tv_monthyear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/one_tv_day"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/one_tv_quote"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="....................................................................................................................................."/>
 </RelativeLayout>
