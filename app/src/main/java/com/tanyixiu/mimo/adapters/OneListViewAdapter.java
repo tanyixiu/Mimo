@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -23,6 +25,31 @@ import java.util.List;
 public class OneListViewAdapter extends BaseAdapter {
 
     private Context mContext;
+    private ListView mListView;
+
+    public void OneListViewAdapter(Context context, ListView listView) {
+        mContext = context;
+        mListView = listView;
+        mListView.setOnScrollListener(mOnScrollListener);
+    }
+
+    private AbsListView.OnScrollListener mOnScrollListener =
+            new AbsListView.OnScrollListener() {
+                @Override
+                public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+                }
+
+                @Override
+                public void onScroll(AbsListView view,
+                                     int firstVisibleItem,
+                                     int visibleItemCount,
+                                     int totalItemCount) {
+
+                }
+            };
+
+
     private List<OneItemEntity> mOneItemEntities = new LinkedList<>();
 
     public OneListViewAdapter(Context context, List<OneItemEntity> items) {
@@ -46,9 +73,7 @@ public class OneListViewAdapter extends BaseAdapter {
             int length = mOneItemEntities.size();
             for (int i = 0; i < length; i++) {
                 int id = mOneItemEntities.get(i).getUniqueId();
-                if (id < targetId) {
-                    return i;
-                }
+                if (id < targetId) return i;
             }
             return length;
         }

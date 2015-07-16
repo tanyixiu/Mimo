@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.util.LruCache;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.tanyixiu.mimo.utils.Logger;
 
 /**
  * Created by tanyixiu on 2015/7/15.
@@ -13,13 +14,18 @@ public class BitmapCache implements ImageLoader.ImageCache {
     private LruCache<String, Bitmap> mCache;
 
     public BitmapCache() {
-        int maxSize = 10 * 1024 * 1024;
-        mCache = new LruCache<String, Bitmap>(maxSize) {
+        int maxMemory = (int) Runtime.getRuntime().maxMemory();
+        int cacheSize = maxMemory / 8;
+
+        Logger.getInstance().d("maxMemory:" + maxMemory / 1024 / 1024 + "MB");
+
+        mCache = new LruCache<String, Bitmap>(cacheSize) {
             @Override
             protected int sizeOf(String key, Bitmap bitmap) {
-                return bitmap.getRowBytes() * bitmap.getHeight();
+                return bitmap.getByteCount();
             }
         };
+
     }
 
     @Override
