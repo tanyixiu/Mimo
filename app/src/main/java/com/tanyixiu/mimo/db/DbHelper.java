@@ -28,7 +28,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     class DbStructure {
         public static final String CREATE_TABLE_ONE = "create table one(" +
-                "uniqueid integer primary key," +
+                "id integer primary key," +
                 "number text," +
                 "imgurl text," +
                 "title text" +
@@ -36,8 +36,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "day text," +
                 "month text," +
                 "year text," +
-                "quote text," +
-                "onedate text" +
+                "quote text" +
                 ")";
     }
 }

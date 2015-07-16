@@ -11,15 +11,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <com.android.volley.toolbox.NetworkImageView
+    <ImageView
         android:id="@+id/one_img_show"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_below="@id/one_tv_num"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/test1010"/>
+        android:adjustViewBounds="true"/>
 
     <TextView
         android:id="@+id/one_tv_title"

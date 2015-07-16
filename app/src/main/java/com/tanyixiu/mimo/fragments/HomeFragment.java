@@ -47,42 +47,9 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         oneListView = (ListView) inflater.inflate(R.layout.fragment_home, container, false);
-        mOneListViewAdapter = new OneListViewAdapter(getActivity(), new ArrayList<OneItemEntity>());
+        mOneListViewAdapter = new OneListViewAdapter(getActivity(), oneListView);
         oneListView.setAdapter(mOneListViewAdapter);
         return oneListView;
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        loadOneItems();
-    }
-
-    private void loadOneItems() {
-        for (String url : Test.oneItemUrls) {
-            StringRequest request = new StringRequest(url,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String html) {
-                            setAdapterDataSource(html);
-                        }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError volleyError) {
-                        }
-                    });
-            ((MainActivity) getActivity()).getRequestQueue().add(request);
-        }
-    }
-
-    private void setAdapterDataSource(String html) {
-        OneItemEntity entity = OneItemParser.parser(html);
-        if (null == entity) {
-            return;
-        }
-        mOneListViewAdapter.AddItem(entity);
-        mOneListViewAdapter.notifyDataSetChanged();
     }
 
 }

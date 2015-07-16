@@ -1,5 +1,10 @@
 package com.tanyixiu.mimo.entities;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by Administrator on 2015/7/15.
  */
@@ -14,10 +19,14 @@ public class OneItemEntity {
     private String quote;
     private String imgurl;
 
-    private int uniqueId;
+    private int id;
 
-    public int getUniqueId() {
-        return uniqueId;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDay() {
@@ -51,7 +60,7 @@ public class OneItemEntity {
     public void setNumber(String number) {
         this.number = number;
         try {
-            uniqueId = Integer.valueOf(number.split(".")[1]);
+            id = Integer.valueOf(number.split(".")[1]);
         } catch (Exception ex) {
 
         }
@@ -87,5 +96,34 @@ public class OneItemEntity {
 
     public void setImgurl(String imgurl) {
         this.imgurl = imgurl;
+    }
+
+    public static int getIdByDate(Date date) {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date oldestDate;
+        try {
+            oldestDate = sdf.parse("2012-10-07");
+        } catch (ParseException e) {
+            return 1;
+        }
+        if (date.before(oldestDate)) {
+            return 1;
+        }
+        Date currentDate = new Date();
+        if (date.after(currentDate)) {
+            date = currentDate;
+        }
+        long timesSpan = date.getTime() - oldestDate.getTime();
+        long days = TimeUnit.MILLISECONDS.toDays(timesSpan);
+        return Math.round(days);
+    }
+
+    public static String getOneUrlById(int oneId) {
+        return "http://caodan.org/" + oneId + "-photo.html";
+    }
+
+    public static String getOneImageUrlById(int oneId) {
+        return "http://caodan.org/wp-content/uploads/vol/" + oneId + ".jpg";
     }
 }

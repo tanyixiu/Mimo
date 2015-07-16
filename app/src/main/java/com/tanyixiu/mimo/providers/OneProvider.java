@@ -18,6 +18,7 @@ public class OneProvider extends ContentProvider {
     private static final int ONE_ITEM = 1;
     private static final String AUTHORITY = "com.tanyixiu.mimo.provider";
     private static final String TB_ONE = "one";
+    private static final String TB_ONE_PRIMARYKEY = "id";
 
     private static UriMatcher sUriMatcher;
     private DbHelper mDbHelper;
@@ -52,7 +53,7 @@ public class OneProvider extends ContentProvider {
 
             case ONE_ITEM:
                 String uniqueId = uri.getPathSegments().get(1);
-                cursor = db.query(TB_ONE, projection, "uniqueid = ?", new String[]{uniqueId},
+                cursor = db.query(TB_ONE, projection, TB_ONE_PRIMARYKEY + " = ?", new String[]{uniqueId},
                         null, null, sortOrder);
                 break;
 
@@ -92,7 +93,7 @@ public class OneProvider extends ContentProvider {
 
             case ONE_ITEM:
                 String uniqueId = uri.getPathSegments().get(1);
-                updatedRows = db.update(TB_ONE, values, "uniqueid = ?", new String[]{uniqueId});
+                updatedRows = db.update(TB_ONE, values, TB_ONE_PRIMARYKEY + " = ?", new String[]{uniqueId});
                 break;
 
             default:
@@ -113,7 +114,7 @@ public class OneProvider extends ContentProvider {
 
             case ONE_ITEM:
                 String uniqueId = uri.getPathSegments().get(1);
-                deletedRows = db.delete(TB_ONE, "uniqueid = ?", new String[]{uniqueId});
+                deletedRows = db.delete(TB_ONE, TB_ONE_PRIMARYKEY + " = ?", new String[]{uniqueId});
                 break;
 
             default:
