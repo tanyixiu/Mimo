@@ -31,8 +31,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 "id integer primary key," +
                 "number text," +
                 "imgurl text," +
-                "title text" +
-                "author text" +
+                "title text," +
+                "author text," +
                 "day text," +
                 "month text," +
                 "year text," +

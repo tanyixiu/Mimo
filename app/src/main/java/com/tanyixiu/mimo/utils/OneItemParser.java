@@ -42,6 +42,9 @@ public class OneItemParser {
 
         Element title_author = quote.parent().getElementsByTag("p").get(1);
         entity.setAuthor(title_author.childNode(2).outerHtml());
+
+        int id = Integer.valueOf(entity.getNumber().replace("VOL.", ""));
+        entity.setId(id);
         return entity;
     }
 }

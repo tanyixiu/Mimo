@@ -25,7 +25,7 @@ public class MainActivity extends BaseActivity {
     private SlideDrawer mSlideDrawer;
     private RelativeLayout main_menu_toggle;
     private TabHolder mTabHolder;
-    private RequestQueue mRequestQueue;
+    private static RequestQueue mRequestQueue;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class MainActivity extends BaseActivity {
         return mSlideDrawer.dispatchTouchEvent(ev);
     }
 
-    public RequestQueue getRequestQueue() {
+    public static RequestQueue getRequestQueue() {
         return mRequestQueue;
     }
 

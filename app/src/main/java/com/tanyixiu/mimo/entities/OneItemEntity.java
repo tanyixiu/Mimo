@@ -98,32 +98,5 @@ public class OneItemEntity {
         this.imgurl = imgurl;
     }
 
-    public static int getIdByDate(Date date) {
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date oldestDate;
-        try {
-            oldestDate = sdf.parse("2012-10-07");
-        } catch (ParseException e) {
-            return 1;
-        }
-        if (date.before(oldestDate)) {
-            return 1;
-        }
-        Date currentDate = new Date();
-        if (date.after(currentDate)) {
-            date = currentDate;
-        }
-        long timesSpan = date.getTime() - oldestDate.getTime();
-        long days = TimeUnit.MILLISECONDS.toDays(timesSpan);
-        return Math.round(days);
-    }
-
-    public static String getOneUrlById(int oneId) {
-        return "http://caodan.org/" + oneId + "-photo.html";
-    }
-
-    public static String getOneImageUrlById(int oneId) {
-        return "http://caodan.org/wp-content/uploads/vol/" + oneId + ".jpg";
-    }
 }

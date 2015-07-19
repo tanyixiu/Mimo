@@ -21,7 +21,7 @@ public class Logger {
     private Logger() {
     }
 
-    public static Logger getInstance() {
+    public static Logger single() {
         if (logger == null) {
             synchronized (Logger.class) {
                 if (logger == null) {
