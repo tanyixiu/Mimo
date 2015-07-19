@@ -103,6 +103,11 @@ public class OneListViewAdapter extends BaseAdapter implements AbsListView.OnScr
         }
 
         int oneItemId = getItem(position);
+        bindDataToHolder(holder, oneItemId);
+        return convertView;
+    }
+
+    private void bindDataToHolder(OneItemViewHolder holder, int oneItemId) {
         OneItemEntity entity = mOneItemLoader.getOneItem(oneItemId);
         if (null == entity) {
             holder.clearData();
@@ -110,7 +115,6 @@ public class OneListViewAdapter extends BaseAdapter implements AbsListView.OnScr
             Bitmap bitmap = mOneItemLoader.getBitmap(entity.getImgurl());
             holder.bindData(entity, bitmap);
         }
-        return convertView;
     }
 
     @Override
@@ -122,6 +126,35 @@ public class OneListViewAdapter extends BaseAdapter implements AbsListView.OnScr
             int lastOneItemId = getItem(getCount() - 1);
             loadNextPageOfOneItem(lastOneItemId - 1);
         }
+
+        if (false == isNextPageInLoading) {
+            Logger.single().d("need bind data when scrolling ??????");
+            isNextPageInLoading = true;
+            int startOneItemId = getItem(mFirstVisibleIndex);
+            mOneItemLoader.loadCurrentPageOfOneItems(startOneItemId, mVisibleItemCount, new OnOneItemLoadedListener() {
+                @Override
+                public void onLoaded(List<Integer> idList) {
+                    isNextPageInLoading = false;
+                    if (null == idList || 0 == idList.size()) {
+                        Logger.single().d("do not need bind data when scrolling !");
+                        return;
+                    }
+                    Logger.single().d("need bind data when scrolling !!!!");
+                    for (int id : idList) {
+                        OneItemViewHolder holder = getViewHolder(id);
+                        if (null == holder) {
+                            continue;
+                        }
+                        Logger.single().d("bind data when scrolling :" + id);
+                        bindDataToHolder(holder, id);
+                    }
+                }
+            });
+        }
+    }
+
+    private OneItemViewHolder getViewHolder(int oneItemId) {
+        return null;
     }
 
     @Override

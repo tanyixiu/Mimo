@@ -154,7 +154,39 @@ public class OneItemLoader {
 
 
     public void loadCurrentPageOfOneItems(int startOneItemId, int itemCount, final OnOneItemLoadedListener listener) {
-        loadOneItems(startOneItemId, itemCount, listener);
+        List<Integer> idList = getOneItemIds(startOneItemId, itemCount);
+        if (null == idList || 0 == idList.size()) {
+            listener.onLoaded(null);
+            return;
+        }
+
+        for (int oneItemId : idList) {
+            OneItemEntity entity = getOneItem(oneItemId);
+            if (null == entity) {
+                mRequestIds.add(oneItemId);
+            }
+
+            String imgUrl = getOneImageUrlById(oneItemId);
+            Bitmap bitmap = getBitmap(imgUrl);
+            if (null == bitmap) {
+                mRequestImgs.add(oneItemId);
+            }
+        }
+
+        if (0 == mRequestIds.size() && 0 == mRequestImgs.size()) {
+            listener.onLoaded(null);
+        }
+
+        for (int id : mRequestIds) {
+            StringRequest request = getStringRequest(listener, idList, id);
+            MainActivity.getRequestQueue().add(request);
+        }
+        for (int id : mRequestImgs) {
+            String imgUrl = getOneImageUrlById(id);
+            BitmapWorkerTask task = new BitmapWorkerTask(id, listener, idList);
+            taskCollection.add(task);
+            task.execute(imgUrl);
+        }
     }
 
 
@@ -163,12 +195,13 @@ public class OneItemLoader {
     }
 
     private void loadOneItems(int startOneItemId, int pageSize, final OnOneItemLoadedListener listener) {
-        final List<Integer> idList = getOneItemIds(startOneItemId, pageSize);
+        List<Integer> idList = getOneItemIds(startOneItemId, pageSize);
         if (null == idList || 0 == idList.size()) {
-            listener.onLoaded(idList);
+            listener.onLoaded(null);
             return;
         }
-        for (final int oneItemId : idList) {
+
+        for (int oneItemId : idList) {
             OneItemEntity entity = getOneItem(oneItemId);
             if (null == entity) {
                 mRequestIds.add(oneItemId);
