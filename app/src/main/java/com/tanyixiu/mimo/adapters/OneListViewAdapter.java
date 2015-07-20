@@ -127,30 +127,30 @@ public class OneListViewAdapter extends BaseAdapter implements AbsListView.OnScr
             loadNextPageOfOneItem(lastOneItemId - 1);
         }
 
-        if (false == isNextPageInLoading) {
-            Logger.single().d("need bind data when scrolling ??????");
-            isNextPageInLoading = true;
-            int startOneItemId = getItem(mFirstVisibleIndex);
-            mOneItemLoader.loadCurrentPageOfOneItems(startOneItemId, mVisibleItemCount, new OnOneItemLoadedListener() {
-                @Override
-                public void onLoaded(List<Integer> idList) {
-                    isNextPageInLoading = false;
-                    if (null == idList || 0 == idList.size()) {
-                        Logger.single().d("do not need bind data when scrolling !");
-                        return;
-                    }
-                    Logger.single().d("need bind data when scrolling !!!!");
-                    for (int id : idList) {
-                        OneItemViewHolder holder = getViewHolder(id);
-                        if (null == holder) {
-                            continue;
-                        }
-                        Logger.single().d("bind data when scrolling :" + id);
-                        bindDataToHolder(holder, id);
-                    }
-                }
-            });
-        }
+//        if (false == isNextPageInLoading) {
+//            Logger.single().d("need bind data when scrolling ??????");
+//            isNextPageInLoading = true;
+//            int startOneItemId = getItem(mFirstVisibleIndex);
+//            mOneItemLoader.loadCurrentPageOfOneItems(startOneItemId, mVisibleItemCount, new OnOneItemLoadedListener() {
+//                @Override
+//                public void onLoaded(List<Integer> idList) {
+//                    isNextPageInLoading = false;
+//                    if (null == idList || 0 == idList.size()) {
+//                        Logger.single().d("do not need bind data when scrolling !");
+//                        return;
+//                    }
+//                    Logger.single().d("need bind data when scrolling !!!!");
+//                    for (int id : idList) {
+//                        OneItemViewHolder holder = getViewHolder(id);
+//                        if (null == holder) {
+//                            continue;
+//                        }
+//                        Logger.single().d("bind data when scrolling :" + id);
+//                        bindDataToHolder(holder, id);
+//                    }
+//                }
+//            });
+//        }
     }
 
     private OneItemViewHolder getViewHolder(int oneItemId) {

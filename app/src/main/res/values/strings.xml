@@ -6,4 +6,7 @@
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="update_at">updated at:&#160;</string>
+    <string name="drop_down_tip">Pull down to refresh or scroll to bottom to load more</string>
 </resources>
