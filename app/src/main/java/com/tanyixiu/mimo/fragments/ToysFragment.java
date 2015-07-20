@@ -25,11 +25,7 @@ public class ToysFragment extends Fragment {
     private DropDownListView listView = null;
     private ArrayAdapter<String> adapter;
 
-    private String[] mStrings = {"Aaaaaa", "Bbbbbb", "Cccccc",
-            "Dddddd", "Eeeeee", "Ffffff",
-            "Gggggg", "Hhhhhh", "Iiiiii",
-            "Jjjjjj", "Kkkkkk", "Llllll",
-            "Mmmmmm", "Nnnnnn",};
+    private String[] mStrings = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N",};
 
     public static final int MORE_DATA_MAX_COUNT = 3;
     public int moreDataCount = 0;
@@ -48,7 +44,6 @@ public class ToysFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         listView = (DropDownListView) getActivity().findViewById(R.id.list_view);
-        // set drop down listener
         listView.setOnDropDownListener(new DropDownListView.OnDropDownListener() {
 
             @Override
@@ -57,7 +52,6 @@ public class ToysFragment extends Fragment {
             }
         });
 
-        // set on bottom listener
         listView.setOnBottomListener(new View.OnClickListener() {
 
             @Override
@@ -65,15 +59,15 @@ public class ToysFragment extends Fragment {
                 new GetDataTask(false).execute();
             }
         });
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ToastUtils.show(getActivity(), R.string.drop_down_tip);
             }
         });
-        // listView.setShowFooterWhenNoMore(true);
 
+        // listView.setShowFooterWhenNoMore(true);
         listItems = new LinkedList<String>();
         listItems.addAll(Arrays.asList(mStrings));
         adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listItems);
@@ -93,7 +87,7 @@ public class ToysFragment extends Fragment {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                ;
+                e.printStackTrace();
             }
             return mStrings;
         }
@@ -105,7 +99,6 @@ public class ToysFragment extends Fragment {
                 listItems.addFirst("Added after drop down");
                 adapter.notifyDataSetChanged();
 
-                // should call onDropDownComplete function of DropDownListView at end of drop down complete.
                 SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd HH:mm:ss");
                 listView.onDropDownComplete(getString(R.string.update_at) + dateFormat.format(new Date()));
             } else {
@@ -116,8 +109,6 @@ public class ToysFragment extends Fragment {
                 if (moreDataCount >= MORE_DATA_MAX_COUNT) {
                     listView.setHasMore(false);
                 }
-
-                // should call onBottomComplete function of DropDownListView at end of on bottom complete.
                 listView.onBottomComplete();
             }
 
