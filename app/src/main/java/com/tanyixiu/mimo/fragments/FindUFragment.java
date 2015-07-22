@@ -3,12 +3,10 @@ package com.tanyixiu.mimo.fragments;
 
 import android.app.Fragment;
 import android.content.Context;
-import android.database.CursorIndexOutOfBoundsException;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,17 +53,17 @@ public class FindUFragment extends Fragment {
 
 
 
-//        Location currentLocation = getCurrentLocation();
-//        if (null == currentLocation) {
-//            return;
-//        }
-//        MyLocationData locationData = new MyLocationData.Builder()
-//                .accuracy(currentLocation.getAccuracy())
-//                .direction(100)
-//                .latitude(currentLocation.getLatitude())
-//                .longitude(currentLocation.getLongitude())
-//                .build();
-//        mBaiduMap.setMyLocationData(locationData);
+        Location currentLocation = getCurrentLocation();
+        if (null == currentLocation) {
+            return;
+        }
+        MyLocationData locationData = new MyLocationData.Builder()
+                .accuracy(currentLocation.getAccuracy())
+                .direction(100)
+                .latitude(currentLocation.getLatitude())
+                .longitude(currentLocation.getLongitude())
+                .build();
+        mBaiduMap.setMyLocationData(locationData);
     }
 
     private Location getCurrentLocation() {
