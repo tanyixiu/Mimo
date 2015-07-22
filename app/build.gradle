@@ -25,4 +25,5 @@ dependencies {
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     compile files('libs/volley.jar')
     compile files('libs/jsoup-1.8.2.jar')
+    compile files('libs/baidumapapi_v3_5_0.jar')
 }

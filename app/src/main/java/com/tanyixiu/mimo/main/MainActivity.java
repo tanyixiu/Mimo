@@ -34,14 +34,14 @@ public class MainActivity extends BaseActivity {
         mRequestQueue = Volley.newRequestQueue(this);
         setContentView(rootView);
         initView(rootView);
-        setUpMenu();
+//        setUpMenu();
     }
 
 
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        return mSlideDrawer.dispatchTouchEvent(ev);
-    }
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent ev) {
+//        return mSlideDrawer.dispatchTouchEvent(ev);
+//    }
 
     public static RequestQueue getRequestQueue() {
         return mRequestQueue;

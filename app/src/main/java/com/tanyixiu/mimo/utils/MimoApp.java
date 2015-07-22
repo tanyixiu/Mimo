@@ -6,6 +6,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Environment;
 
+import com.baidu.mapapi.SDKInitializer;
+
 import java.io.File;
 
 /**
@@ -19,6 +21,7 @@ public class MimoApp extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = getApplicationContext();
+        SDKInitializer.initialize(mContext);
     }
 
     public static Context getContext() {
