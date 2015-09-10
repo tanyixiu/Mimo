@@ -17,7 +17,7 @@ package com.tanyixiu.mimo.performance;
 
 //package libcore.io;
 
-import com.tanyixiu.mimo.utils.MimoApp;
+import com.tanyixiu.MimoApp;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;

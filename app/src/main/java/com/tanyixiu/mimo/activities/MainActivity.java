@@ -1,10 +1,9 @@
-package com.tanyixiu.mimo.main;
+package com.tanyixiu.mimo.activities;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -12,11 +11,10 @@ import android.widget.TextView;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.tanyixiu.mimo.R;
-import com.tanyixiu.mimo.activities.BaseActivity;
 import com.tanyixiu.mimo.fragments.FindUFragment;
-import com.tanyixiu.mimo.fragments.HomeFragment;
+import com.tanyixiu.mimo.fragments.OneFragment;
 import com.tanyixiu.mimo.fragments.RunFragment;
-import com.tanyixiu.mimo.fragments.ToysFragment;
+import com.tanyixiu.mimo.fragments.ThinkingFragment;
 import com.tanyixiu.widgets.slidedrawer.SlideDrawer;
 
 
@@ -34,7 +32,7 @@ public class MainActivity extends BaseActivity {
         mRequestQueue = Volley.newRequestQueue(this);
         setContentView(rootView);
         initView(rootView);
-//        setUpMenu();
+        //setUpMenu();
     }
 
 
@@ -86,20 +84,20 @@ public class MainActivity extends BaseActivity {
     class TabHolder {
 
         private TextView tabHome;
+        private TextView tabThinking;
         private TextView tabFindU;
-        private TextView tabToys;
         private TextView tabRun;
         private TabHolderOnClickListener mTabHolderOnClickListener;
 
         public TabHolder(View rootView) {
             tabHome = (TextView) rootView.findViewById(R.id.main_tab_home);
+            tabThinking = (TextView) rootView.findViewById(R.id.main_tab_thinking);
             tabFindU = (TextView) rootView.findViewById(R.id.main_tab_findu);
-            tabToys = (TextView) rootView.findViewById(R.id.main_tab_toys);
             tabRun = (TextView) rootView.findViewById(R.id.main_tab_run);
 
             tabHome.setOnClickListener(mOnClickListener);
+            tabThinking.setOnClickListener(mOnClickListener);
             tabFindU.setOnClickListener(mOnClickListener);
-            tabToys.setOnClickListener(mOnClickListener);
             tabRun.setOnClickListener(mOnClickListener);
         }
 
@@ -121,8 +119,8 @@ public class MainActivity extends BaseActivity {
 
         private void resetBackground() {
             tabHome.setBackgroundResource(R.color.bkg_color_green_light);
+            tabThinking.setBackgroundResource(R.color.bkg_color_green_light);
             tabFindU.setBackgroundResource(R.color.bkg_color_green_light);
-            tabToys.setBackgroundResource(R.color.bkg_color_green_light);
             tabRun.setBackgroundResource(R.color.bkg_color_green_light);
         }
 
@@ -145,13 +143,13 @@ public class MainActivity extends BaseActivity {
             Fragment fragment = null;
             switch (tab.getId()) {
                 case R.id.main_tab_home:
-                    fragment = HomeFragment.getNewInstance();
+                    fragment = OneFragment.getNewInstance();
+                    break;
+                case R.id.main_tab_thinking:
+                    fragment = ThinkingFragment.getNewInstance();
                     break;
                 case R.id.main_tab_findu:
                     fragment = FindUFragment.getNewInstance();
-                    break;
-                case R.id.main_tab_toys:
-                    fragment = ToysFragment.getNewInstance();
                     break;
                 case R.id.main_tab_run:
                     fragment = RunFragment.getNewInstance();

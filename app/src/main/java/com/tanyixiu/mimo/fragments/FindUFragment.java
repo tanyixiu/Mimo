@@ -35,12 +35,12 @@ public class FindUFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         contentView = inflater.inflate(R.layout.fragment_find_u, container, false);
-        initViews(contentView);
+        //initViews(contentView);
         return contentView;
     }
 
     private void initViews(View rootView) {
-        mMapView = (MapView) rootView.findViewById(R.id.fu_mapview);
+//        mMapView = (MapView) rootView.findViewById(R.id.fu_mapview);
         mBaiduMap = mMapView.getMap();
 
         mMapView.showScaleControl(false);
@@ -101,18 +101,18 @@ public class FindUFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mMapView.onResume();
+//        mMapView.onResume();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        mMapView.onPause();
+//        mMapView.onPause();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mMapView.onDestroy();
+//        mMapView.onDestroy();
     }
 }

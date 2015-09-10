@@ -1,10 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-    <com.baidu.mapapi.map.MapView
-        android:id="@+id/fu_mapview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <!--<com.baidu.mapapi.map.MapView-->
+        <!--android:id="@+id/fu_mapview"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:visibility="gone"/>-->
 </LinearLayout>

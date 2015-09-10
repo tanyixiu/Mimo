@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    android:id="@+id/relativelayout_fragment_home"
+    android:id="@+id/one_item_root"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,7 +18,8 @@
         android:layout_below="@id/one_tv_num"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:adjustViewBounds="true"/>
+        android:adjustViewBounds="true"
+        android:scaleType="center"/>
 
     <TextView
         android:id="@+id/one_tv_title"

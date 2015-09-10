@@ -11,7 +11,7 @@ import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.tanyixiu.mimo.main.MainActivity;
+import com.tanyixiu.mimo.activities.MainActivity;
 import com.tanyixiu.mimo.performance.DiskLruCache;
 import com.tanyixiu.mimo.resolver.OneResolver;
 import com.tanyixiu.mimo.utils.Encrypter;
@@ -37,7 +37,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by tanyixiu on 2015/7/16.
  */
-public class OneItemLoader {
+public class OneItemLoader_old {
 
     private static final int PAGE_SIZE = 5;
     private static final String EARLIESTDATE = "2012-10-07";
@@ -54,7 +54,7 @@ public class OneItemLoader {
         void onLoaded(List<Integer> idList);
     }
 
-    public OneItemLoader(Context context) {
+    public OneItemLoader_old(Context context) {
         mContext = context;
         mRequestIds = new HashSet<>();
         mRequestImgs = new HashSet<>();

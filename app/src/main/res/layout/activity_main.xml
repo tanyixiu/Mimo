@@ -22,7 +22,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true">
+            android:layout_centerVertical="true"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/main_title_more"
@@ -74,22 +75,22 @@
             android:text="Home"/>
 
         <TextView
+            android:id="@+id/main_tab_thinking"
+            style="@style/style_main_tab"
+            android:drawableTop="@drawable/ic_toys_white_24dp"
+            android:text="Thinking"/>
+
+        <TextView
             android:id="@+id/main_tab_findu"
             style="@style/style_main_tab"
             android:drawableTop="@drawable/ic_room_white_24dp"
             android:text="FindU"/>
 
         <TextView
-            android:id="@+id/main_tab_toys"
-            style="@style/style_main_tab"
-            android:drawableTop="@drawable/ic_toys_white_24dp"
-            android:text="Toys"/>
-
-        <TextView
             android:id="@+id/main_tab_run"
             style="@style/style_main_tab"
             android:drawableTop="@drawable/ic_directions_run_white_24dp"
-            android:text="Run"/>
+            android:text="Play"/>
     </LinearLayout>
 
 </LinearLayout>
