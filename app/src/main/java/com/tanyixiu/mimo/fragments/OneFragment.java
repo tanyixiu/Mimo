@@ -52,7 +52,7 @@ public class OneFragment extends Fragment {
         mOneItemLoader = new OneItemLoader();
         mViewHolder = new ViewHolder(mRootView);
         mViewHolder.toggleLoading(true);
-        int id = OneItemLoader.getMaxOneItemID() - 1;
+        int id = OneItemLoader.getMaxOneItemID();
         mOneItemLoader.loadOneItem(id, new OnOneItemLoadedListener() {
             @Override
             public void onLoaded(OneItem oneItem) {

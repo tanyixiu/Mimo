@@ -4,9 +4,13 @@
     <color name="bkg_color_green_dark">@android:color/holo_green_dark</color>
     <color name="bkg_color_white">@android:color/white</color>
 
+    <color name="bkg_color_ripple_accent">#CDDC39</color>
+    <color name="bkg_color_ripple_accent_pressed">#8BC34A</color>
+
     <color name="txt_color_white">@android:color/white</color>
     <color name="txt_color_black">@android:color/black</color>
     <color name="txt_color_blue">#8AE3FC</color>
+    <color name="txt_color_green_light">@android:color/holo_green_light</color>
 
     <color name="divider_color">#D8D8D8</color>
 </resources>

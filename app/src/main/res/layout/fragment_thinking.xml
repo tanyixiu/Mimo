@@ -1,21 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:mimo="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
 
-    <com.yalantis.phoenix.PullToRefreshView
-        android:id="@+id/one_refreshview"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.bigkoo.convenientbanner.ConvenientBanner
+            android:id="@+id/think_convenientBanner"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"/>
 
         <ListView
-            android:id="@+id/one_listview"
+            android:id="@+id/think_listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@null"
             android:dividerHeight="0dp"
             android:fadingEdge="none"
             android:scrollbars="none"/>
-    </com.yalantis.phoenix.PullToRefreshView>
+    </LinearLayout>
 
-</RelativeLayout>
+
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/think_btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:src="@drawable/ic_add_white_24dp"
+        mimo:fab_colorNormal="@color/bkg_color_ripple_accent"
+        mimo:fab_colorPressed="@color/bkg_color_ripple_accent_pressed"
+        mimo:fab_colorRipple="@color/bkg_color_ripple_accent"/>
+
+</FrameLayout>

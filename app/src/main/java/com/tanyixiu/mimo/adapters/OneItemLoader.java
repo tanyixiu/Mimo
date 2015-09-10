@@ -49,7 +49,7 @@ public class OneItemLoader {
         return String.format(STR_ONEITEM_URL, oneId);
     }
 
-    public String getOneImageUrlById(int oneId) {
+    public static String getOneImageUrlById(int oneId) {
         return String.format(STR_ONEIMAGE_URL, oneId);
     }
 

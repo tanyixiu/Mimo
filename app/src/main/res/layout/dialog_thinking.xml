@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/bkg_color_green_light"
+        android:gravity="center"
+        android:text="Thinking"
+        android:textColor="@color/txt_color_white"
+        android:textSize="20sp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:ems="10"
+        android:id="@+id/dialogthing_ed_idea"
+        android:gravity="top"
+        android:inputType="textMultiLine"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <Button
+            android:id="@+id/dialogthing_btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_cancel_selector"
+            android:text="Cancel"
+            android:textColor="@drawable/butttontext_color_selector"/>
+
+        <Button
+            android:id="@+id/dialogthing_btn_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:background="@drawable/button_save_selector"
+            android:text="Save"
+            android:textColor="@color/txt_color_white"/>
+    </LinearLayout>
+</LinearLayout>

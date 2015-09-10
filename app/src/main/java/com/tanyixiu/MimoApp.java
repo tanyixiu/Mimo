@@ -35,7 +35,7 @@ public class MimoApp extends Application {
     public void onCreate() {
         super.onCreate();
         sContext = getApplicationContext();
-        SDKInitializer.initialize(sContext);
+//        SDKInitializer.initialize(sContext);
         ActiveAndroid.initialize(sContext);
         initImageLoaderConfig();
     }
