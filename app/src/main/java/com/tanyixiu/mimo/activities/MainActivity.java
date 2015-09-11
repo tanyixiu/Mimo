@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.tanyixiu.mimo.R;
-import com.tanyixiu.mimo.fragments.FindUFragment;
+import com.tanyixiu.mimo.fragments.FindMeFragment;
 import com.tanyixiu.mimo.fragments.OneFragment;
 import com.tanyixiu.mimo.fragments.RunFragment;
 import com.tanyixiu.mimo.fragments.ThinkingFragment;
@@ -149,7 +149,7 @@ public class MainActivity extends BaseActivity {
                     fragment = ThinkingFragment.getNewInstance();
                     break;
                 case R.id.main_tab_findu:
-                    fragment = FindUFragment.getNewInstance();
+                    fragment = FindMeFragment.getNewInstance();
                     break;
                 case R.id.main_tab_run:
                     fragment = RunFragment.getNewInstance();

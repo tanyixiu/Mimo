@@ -15,20 +15,23 @@
             android:value="mimo.db"/>
         <meta-data
             android:name="AA_DB_VERSION"
-            android:value="1"/>
+            android:value="2"/>
         <!--<meta-data-->
         <!--android:name="com.baidu.lbsapi.API_KEY"-->
         <!--android:value="9aQorbWQrfUHj9Wp1zveeNTh"/>-->
 
         <activity
             android:name=".activities.MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".activities.BookEditActivity"/>
 
         <provider
             android:name=".providers.OneProvider"

@@ -84,7 +84,7 @@
             android:id="@+id/main_tab_findu"
             style="@style/style_main_tab"
             android:drawableTop="@drawable/ic_room_white_24dp"
-            android:text="FindU"/>
+            android:text="FindMe"/>
 
         <TextView
             android:id="@+id/main_tab_run"

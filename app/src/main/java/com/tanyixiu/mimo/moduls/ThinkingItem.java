@@ -19,6 +19,9 @@ public class ThinkingItem extends Model {
     @Column(name = "idea", notNull = true)
     private String idea;
 
+    @Column(name = "ismark", notNull = true)
+    private boolean isMark;
+
     @Column(name = "createtime")
     private String createTime;
 
@@ -38,6 +41,14 @@ public class ThinkingItem extends Model {
         this.idea = idea;
     }
 
+    public boolean getIsMark() {
+        return isMark;
+    }
+
+    public void setIsMark(boolean isMark) {
+        this.isMark = isMark;
+    }
+
     public String getCreateTime() {
         return createTime;
     }
@@ -50,6 +61,7 @@ public class ThinkingItem extends Model {
         ThinkingItem item = new ThinkingItem();
         item.setId(UUID.randomUUID().toString());
         item.setIdea(idea);
+        item.setIsMark(false);
         item.setCreateTime(StringHelper.getCurrentTime());
         return item;
     }

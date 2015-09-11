@@ -3,11 +3,9 @@ package com.tanyixiu.mimo.fragments;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
-import android.content.ComponentCallbacks;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,25 +13,20 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bigkoo.convenientbanner.CBPageAdapter;
-import com.bigkoo.convenientbanner.CBViewHolderCreator;
-import com.bigkoo.convenientbanner.ConvenientBanner;
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.melnykov.fab.FloatingActionButton;
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.tanyixiu.MimoApp;
 import com.tanyixiu.mimo.R;
-import com.tanyixiu.mimo.activities.MainActivity;
-import com.tanyixiu.mimo.adapters.OneItemLoader;
 import com.tanyixiu.mimo.adapters.ThinkingItemLoader;
 import com.tanyixiu.mimo.moduls.ThinkingItem;
-import com.yalantis.phoenix.PullToRefreshView;
+import com.tanyixiu.mimo.utils.ToolUtils;
 
-import java.io.BufferedReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -61,35 +54,9 @@ public class ThinkingFragment extends Fragment {
         return mRootView;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (null != mViewHolder && null != mViewHolder.mConvenientBanner) {
-            mViewHolder.mConvenientBanner.startTurning(5000);
-        }
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (null != mViewHolder && null != mViewHolder.mConvenientBanner) {
-            mViewHolder.mConvenientBanner.stopTurning();
-        }
-    }
-
     private void initView() {
         mViewHolder = new ViewHolder(mRootView);
         mThinkingItemLoader = new ThinkingItemLoader();
-
-        mViewHolder.mConvenientBanner.setPages(new CBViewHolderCreator<NetworkImageHolderView>() {
-            @Override
-            public NetworkImageHolderView createHolder() {
-                return new NetworkImageHolderView();
-            }
-        }, getNetWorkImages())
-                .setPageIndicator(new int[]{R.drawable.ic_page_indicator, R.drawable.ic_page_indicator_focused})
-                .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT)
-                .setPageTransformer(ConvenientBanner.Transformer.DefaultTransformer);
 
         mViewHolder.mThinkBtnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,15 +72,6 @@ public class ThinkingFragment extends Fragment {
                 mViewHolder.mThinkListview.setAdapter(mThinkingListAdapter);
             }
         });
-    }
-
-    private List<String> getNetWorkImages() {
-        List<String> mList = new ArrayList<>();
-        int number = OneItemLoader.getMaxOneItemID();
-        for (int i = number; i > number - 7 && i > 0; i--) {
-            mList.add(OneItemLoader.getOneImageUrlById(i));
-        }
-        return mList;
     }
 
     private void doAddClick() {
@@ -152,16 +110,50 @@ public class ThinkingFragment extends Fragment {
         });
     }
 
+
     class ThinkingListAdapter extends BaseAdapter {
 
         private Context mContext;
-        private ListView mListView;
+        private SwipeMenuListView mListView;
         private List<ThinkingItem> mItems;
 
-        public ThinkingListAdapter(Context context, ListView listView, List<ThinkingItem> items) {
+        public ThinkingListAdapter(Context context, SwipeMenuListView listView, List<ThinkingItem> items) {
             mItems = items;
             mContext = context;
             mListView = listView;
+            mListView.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
+            mListView.setMenuCreator(mMenuCreator);
+            mListView.setOnMenuItemClickListener(mOnMenuItemClickListener);
+        }
+
+        private SwipeMenuCreator mMenuCreator = new SwipeMenuCreator() {
+
+            @Override
+            public void create(SwipeMenu swipeMenu) {
+                SwipeMenuItem deleteItem = new SwipeMenuItem(MimoApp.getContext());
+                deleteItem.setBackground(R.color.bkg_color_orange);
+                deleteItem.setWidth(ToolUtils.dp2px(90));
+                deleteItem.setIcon(R.drawable.ic_delete);
+                swipeMenu.addMenuItem(deleteItem);
+            }
+        };
+
+        private SwipeMenuListView.OnMenuItemClickListener mOnMenuItemClickListener = new SwipeMenuListView.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(int position, SwipeMenu swipeMenu, int index) {
+                ThinkingItem item = (ThinkingItem) getItem(position);
+                btnDeleteClick(item);
+                return true;
+            }
+        };
+
+        private void btnDeleteClick(ThinkingItem item) {
+            if (null == item) {
+                return;
+            }
+            item.delete();
+            mItems.remove(item);
+            notifyDataSetChanged();
         }
 
         public synchronized void addItem(ThinkingItem item) {
@@ -209,49 +201,53 @@ public class ThinkingFragment extends Fragment {
             return convertView;
         }
 
-    }
 
-    class NetworkImageHolderView implements CBPageAdapter.Holder<String> {
+        class ThinkingItemViewHolder {
 
-        private ImageView imageView;
+            private ThinkingItem mThinkingItem;
 
-        @Override
-        public View createView(Context context) {
-            imageView = new ImageView(context);
-            imageView.setScaleType(ImageView.ScaleType.CENTER);
-            return imageView;
-        }
+            @InjectView(R.id.thinklistitem_img_mark)
+            ImageView mThinklistitemImgMark;
+            @InjectView(R.id.thinklistitem_tv_idea)
+            TextView mThinklistitemTvIdea;
 
-        @Override
-        public void UpdateUI(Context context, final int position, String data) {
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            ImageLoader.getInstance().displayImage(data, imageView);
-        }
-    }
-
-    protected static class ThinkingItemViewHolder {
-        @InjectView(R.id.thinklistitem_tv_idea)
-        TextView mThinklistitemTvIdea;
-
-        ThinkingItemViewHolder(View view) {
-            ButterKnife.inject(this, view);
-        }
-
-        public void bindData(ThinkingItem item) {
-            if (null == item) {
-                return;
+            ThinkingItemViewHolder(View view) {
+                ButterKnife.inject(this, view);
+                mThinklistitemImgMark.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        btnMarkClick(mThinkingItem);
+                    }
+                });
             }
-            mThinklistitemTvIdea.setText(item.getIdea());
+
+            private void btnMarkClick(ThinkingItem item) {
+                if (null == item) {
+                    return;
+                }
+                item.setIsMark(!item.getIsMark());
+                item.save();
+                notifyDataSetChanged();
+            }
+
+            public void bindData(ThinkingItem item) {
+                if (null == item) {
+                    return;
+                }
+                mThinkingItem = item;
+
+                mThinklistitemTvIdea.setText(item.getIdea());
+                int resId = item.getIsMark() ? R.drawable.ic_star_black_18dp : R.drawable.ic_star_border_black_18dp;
+                mThinklistitemImgMark.setImageResource(resId);
+            }
         }
     }
 
     protected static class ViewHolder {
         @InjectView(R.id.think_listview)
-        ListView mThinkListview;
+        SwipeMenuListView mThinkListview;
         @InjectView(R.id.think_btn_add)
         FloatingActionButton mThinkBtnAdd;
-        @InjectView(R.id.think_convenientBanner)
-        ConvenientBanner mConvenientBanner;
 
         ViewHolder(View view) {
             ButterKnife.inject(this, view);

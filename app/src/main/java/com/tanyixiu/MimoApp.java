@@ -110,4 +110,12 @@ public class MimoApp extends Application {
         }
         return new File(cachePath + File.separator + uniqueName);
     }
+
+    public static String getSDCardDir() {
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
+                || !Environment.isExternalStorageRemovable()) {
+            return Environment.getExternalStorageDirectory().getPath();
+        }
+        return Environment.getRootDirectory().getPath();
+    }
 }

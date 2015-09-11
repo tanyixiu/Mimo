@@ -5,7 +5,7 @@
              android:layout_height="match_parent">
 
     <com.baoyz.swipemenulistview.SwipeMenuListView
-        android:id="@+id/think_listview"
+        android:id="@+id/findme_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@color/bkg_color_light_gray"
@@ -15,7 +15,7 @@
 
 
     <com.melnykov.fab.FloatingActionButton
-        android:id="@+id/think_btn_add"
+        android:id="@+id/fineme_btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"

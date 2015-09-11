@@ -14,13 +14,20 @@
         android:textSize="20sp"/>
 
     <EditText
+        android:id="@+id/dialogthing_ed_idea"
         android:layout_width="match_parent"
+        android:hint="Say something......"
         android:layout_height="150dp"
         android:layout_margin="@dimen/activity_horizontal_margin"
+        android:background="@null"
         android:ems="10"
-        android:id="@+id/dialogthing_ed_idea"
         android:gravity="top"
         android:inputType="textMultiLine"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bkg_color_gray_shadow"/>
 
     <LinearLayout
         android:layout_width="match_parent"

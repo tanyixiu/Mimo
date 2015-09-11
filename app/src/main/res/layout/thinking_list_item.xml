@@ -2,14 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:paddingLeft="@dimen/activity_horizontal_margin"
-              android:paddingRight="@dimen/activity_horizontal_margin">
+              android:background="@drawable/thinkingitem_bkg_selector"
+              android:gravity="center_vertical"
+              android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/thinklistitem_tv_idea"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:minHeight="50dp"/>
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin">
+
+        <ImageView
+            android:id="@+id/thinklistitem_img_mark"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_star_border_black_18dp"/>
+
+        <TextView
+            android:id="@+id/thinklistitem_tv_idea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="20dp"
+            android:textSize="16sp"/>
+    </LinearLayout>
 </LinearLayout>

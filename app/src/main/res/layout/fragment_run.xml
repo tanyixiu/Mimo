@@ -5,4 +5,8 @@
               android:orientation="vertical"
               tools:context="com.tanyixiu.mimo.fragments.RunFragment">
 
+    <com.bigkoo.convenientbanner.ConvenientBanner
+        android:id="@+id/run_convenientBanner"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"/>
 </LinearLayout>

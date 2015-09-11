@@ -19,15 +19,15 @@ public class ThinkingItemLoader {
     }
 
     public void loadThinkItems(OnThinkingItemLoadedListener listener) {
-        ThinkItemLoaderThread thread = new ThinkItemLoaderThread(listener);
+        ThinkingItemLoaderThread thread = new ThinkingItemLoaderThread(listener);
         thread.start();
     }
 
-    class ThinkItemLoaderThread extends Thread {
+    class ThinkingItemLoaderThread extends Thread {
 
         private OnThinkingItemLoadedListener mListener;
 
-        public ThinkItemLoaderThread(OnThinkingItemLoadedListener listener) {
+        public ThinkingItemLoaderThread(OnThinkingItemLoadedListener listener) {
             mListener = listener;
         }
 
