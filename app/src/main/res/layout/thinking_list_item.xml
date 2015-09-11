@@ -23,7 +23,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:scaleType="center"
-            android:src="@drawable/ic_star_border_black_18dp"/>
+            android:src="@drawable/ic_star_border"/>
 
         <TextView
             android:id="@+id/thinklistitem_tv_idea"

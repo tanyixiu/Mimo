@@ -92,6 +92,28 @@ public class BookItem extends Model implements Parcelable {
         return String.format(IMAGE_URL, this.id);
     }
 
+    public boolean isEqual(BookItem item) {
+        if (!this.id.equals(item.getId())) {
+            return false;
+        }
+        if (!this.name.equals(item.getName())) {
+            return false;
+        }
+        if (!this.author.equals(item.getAuthor())) {
+            return false;
+        }
+        if (!this.digest.equals(item.getDigest())) {
+            return false;
+        }
+        if (!this.coverUrl.equals(item.getCoverUrl())) {
+            return false;
+        }
+        if (this.state != item.getState()) {
+            return false;
+        }
+        return true;
+    }
+
     public int getStateColor() {
         switch (this.state) {
             case BookItem.BooKState.NOT_READ:

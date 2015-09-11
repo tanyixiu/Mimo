@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
 
 import com.tanyixiu.mimo.R;
 import com.tanyixiu.mimo.adapters.BookItemLoader;
@@ -91,10 +93,12 @@ public class BookEditActivity extends BaseActivity {
             return;
         }
 
+        mViewHolder.toggleLoading(true);
         final Bitmap bitmap = mViewHolder.saveBitmap();
         new BookItemLoader().saveBookItem(item, bitmap, new BookItemLoader.OnBookItemSaveListener() {
             @Override
             public void onSaved(boolean success) {
+                mViewHolder.toggleLoading(false);
                 Intent intent = new Intent();
                 intent.putExtra("bookitem", item);
                 setResult(RESULT_OK, intent);
@@ -159,6 +163,12 @@ public class BookEditActivity extends BaseActivity {
         Button mBookeditBtnCancel;
         @InjectView(R.id.bookedit_btn_save)
         Button mBookeditBtnSave;
+        @InjectView(R.id.bookedit_ll_scroll)
+        ScrollView mBookeditLlScrollview;
+        @InjectView(R.id.bookedit_ll_buttons)
+        LinearLayout mBookeditLlButtons;
+        @InjectView(R.id.bookedit_cpb)
+        ProgressBar mProgressBar;
 
         ViewHolder(View view) {
             ButterKnife.inject(this, view);
@@ -185,7 +195,7 @@ public class BookEditActivity extends BaseActivity {
             return drawableToBitmap(drawable);
         }
 
-        public static Bitmap drawableToBitmap(Drawable drawable) {
+        public Bitmap drawableToBitmap(Drawable drawable) {
 
             Bitmap bitmap = Bitmap
                     .createBitmap(
@@ -198,6 +208,13 @@ public class BookEditActivity extends BaseActivity {
             drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
             drawable.draw(canvas);
             return bitmap;
+        }
+
+        public void toggleLoading(boolean isLoading) {
+            mBookeditImgBack.setVisibility(isLoading ? View.GONE : View.VISIBLE);
+            mBookeditLlScrollview.setVisibility(isLoading ? View.GONE : View.VISIBLE);
+            mBookeditLlButtons.setVisibility(isLoading ? View.GONE : View.VISIBLE);
+            mProgressBar.setVisibility(isLoading ? View.VISIBLE : View.GONE);
         }
     }
 }

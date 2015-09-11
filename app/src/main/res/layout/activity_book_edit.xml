@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:mimo="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/bkg_color_green_light"
@@ -39,7 +40,22 @@
         android:orientation="vertical"
         android:padding="@dimen/activity_horizontal_margin">
 
+        <!--<fr.castorflex.android.circularprogressbar.CircularProgressBar-->
+        <!--android:id="@+id/bookedit_cpb"-->
+        <!--android:layout_width="36dp"-->
+        <!--android:layout_height="36dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--mimo:cpb_colors="@array/gplus_colors"/>-->
+        <ProgressBar
+            android:id="@+id/bookedit_cpb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
+
+
         <ScrollView
+            android:id="@+id/bookedit_ll_scroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="none">
@@ -137,11 +153,9 @@
 
                         <ImageView
                             android:id="@+id/bookedit_img_cover"
-                            android:layout_width="70dp"
+                            android:layout_width="80dp"
                             android:layout_height="100dp"
-                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/book"
                             android:visibility="gone"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -178,6 +192,7 @@
         </ScrollView>
 
         <LinearLayout
+            android:id="@+id/bookedit_ll_buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

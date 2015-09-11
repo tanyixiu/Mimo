@@ -4,9 +4,11 @@ package com.tanyixiu.mimo.fragments;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,8 @@ import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.melnykov.fab.FloatingActionButton;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.tanyixiu.MimoApp;
 import com.tanyixiu.mimo.R;
 import com.tanyixiu.mimo.activities.BookEditActivity;
@@ -219,12 +223,20 @@ public class FindMeFragment extends Fragment {
                 if (null == item) {
                     return;
                 }
+                if (null != mBookItem && mBookItem.isEqual(item)) {
+                    return;
+                }
                 mBookItem = item;
                 mFindmeTvName.setText(item.getName());
                 mFindmeTvAuthor.setText(item.getAuthor());
                 mFindmeTvDigest.setText(item.getDigest());
                 mFindMeTvState.setText(item.getStateName());
                 mFindMeTvState.setBackgroundResource(item.getStateColor());
+
+                String oldUrl = (String) this.mFindMeImgCover.getTag();
+                if (item.getCoverUrl().equals(oldUrl)) {
+                    return;
+                }
                 ImageLoader.getInstance().displayImage(item.getCoverUrl(), this.mFindMeImgCover);
             }
         }

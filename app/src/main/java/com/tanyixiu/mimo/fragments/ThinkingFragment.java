@@ -237,7 +237,7 @@ public class ThinkingFragment extends Fragment {
                 mThinkingItem = item;
 
                 mThinklistitemTvIdea.setText(item.getIdea());
-                int resId = item.getIsMark() ? R.drawable.ic_star_black_18dp : R.drawable.ic_star_border_black_18dp;
+                int resId = item.getIsMark() ? R.drawable.ic_star_fill : R.drawable.ic_star_border;
                 mThinklistitemImgMark.setImageResource(resId);
             }
         }

@@ -125,7 +125,7 @@ public class BookItemLoader {
                 if (null != bitmap) {
                     try {
                         String path = ImageSaver.saveBitmap(item.getId(), bitmap);
-                        path = "file://" + path;
+                        path = "file:/" + path;
                         item.setCoverUrl(path);
                     } catch (Exception e) {
                         message.obj = false;

@@ -28,6 +28,7 @@ dependencies {
     compile 'com.melnykov:floatingactionbutton:1.3.0'
     compile 'com.bigkoo:convenientbanner:1.0.7'
     compile 'com.baoyz.swipemenulistview:library:1.3.0'
+    compile 'com.github.castorflex.smoothprogressbar:library-circular:1.1.0'
     compile files('libs/ActiveAndroid-master.jar')
     compile files('libs/locSDK_6.03.jar')
     compile files('libs/volley.jar')
