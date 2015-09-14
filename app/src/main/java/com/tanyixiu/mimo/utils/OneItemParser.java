@@ -1,6 +1,7 @@
 package com.tanyixiu.mimo.utils;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.tanyixiu.mimo.entities.OneItemEntity;
 import com.tanyixiu.mimo.moduls.OneItem;
@@ -18,6 +19,7 @@ public class OneItemParser {
         if (TextUtils.isEmpty(html)) {
             throw new NullPointerException("response html is null");
         }
+        Log.d("TEST", html);
         OneItemEntity entity = new OneItemEntity();
 
         Document document = Jsoup.parse(html);
@@ -51,6 +53,45 @@ public class OneItemParser {
 
 
     public static OneItem parserOne(String html) throws Exception {
+        if (TextUtils.isEmpty(html)) {
+            throw new NullPointerException("response html is null");
+        }
+        OneItem oneItem = new OneItem();
+
+        Document document = Jsoup.parse(html);
+        String number = document.getElementsByClass("one-titulo").get(0).childNode(0).outerHtml();
+        oneItem.setNumber(number.replaceAll("\\n", ""));
+
+        String title = document.getElementsByClass("one-imagen-leyenda").get(0).childNode(0).outerHtml();
+        oneItem.setTitle(title.replaceAll("\\n", ""));
+
+        String author = document.getElementsByClass("one-imagen-leyenda").get(0).childNode(2).outerHtml();
+        oneItem.setAuthor(author.replaceAll("\\n", ""));
+
+        String quote = document.getElementsByClass("one-cita").get(0).childNode(0).outerHtml();
+        oneItem.setQuote(quote.replaceAll("\\n", ""));
+
+        String day = document.getElementsByClass("dom").get(0).childNode(0).outerHtml();
+        oneItem.setDay(day.replace("\\n", ""));
+
+        String monthYear = document.getElementsByClass("may").get(0).childNode(0).outerHtml();
+        monthYear.replaceAll("\\n", "");
+        oneItem.setMonth(monthYear.split(" ")[0]);
+        oneItem.setYear(monthYear.split(" ")[1]);
+
+        String imgUrl = document.getElementsByClass("one-imagen").get(0).childNode(1).attributes().get("src");
+        oneItem.setImgurl(imgUrl);
+
+        int id = Integer.valueOf(oneItem.getNumber().replace("VOL.", "").replaceAll(" ", ""));
+        oneItem.setId(id);
+
+        if (null == oneItem) {
+            throw new Exception("OneItemParser parsed failed");
+        }
+        return oneItem;
+    }
+
+    public static OneItem parserOne_old(String html) throws Exception {
         if (TextUtils.isEmpty(html)) {
             throw new NullPointerException("response html is null");
         }

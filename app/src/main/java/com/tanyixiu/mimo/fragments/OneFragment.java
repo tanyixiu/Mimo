@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
+import com.activeandroid.query.Delete;
 import com.tanyixiu.mimo.R;
 import com.tanyixiu.mimo.adapters.OneItemLoader;
 import com.tanyixiu.mimo.adapters.OneItemLoader.OnOneItemLoadedListener;
@@ -42,6 +43,8 @@ public class OneFragment extends Fragment {
         if (null != mRootView) {
             return mRootView;
         }
+
+        new Delete().from(OneItem.class).execute();
         mRootView = inflater.inflate(R.layout.fragment_one, container, false);
         initView();
         return mRootView;

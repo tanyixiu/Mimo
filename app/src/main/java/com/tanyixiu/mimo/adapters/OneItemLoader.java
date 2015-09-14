@@ -23,7 +23,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class OneItemLoader {
     private static final String STR_EARLIEST_DATE = "2012-10-07";
-    private static final String STR_ONEITEM_URL = "http://caodan.org/%s-photo.html";
+//    private static final String STR_ONEITEM_URL = "http://caodan.org/%s-photo.html";
+//    private static final String STR_ONEIMAGE_URL = "http://caodan.org/wp-content/uploads/vol/%s.jpg";
+
+    private static final String STR_ONEITEM_URL = "http://wufazhuce.com/one/vol.%s";
     private static final String STR_ONEIMAGE_URL = "http://caodan.org/wp-content/uploads/vol/%s.jpg";
 
     public interface OnOneItemLoadedListener {
