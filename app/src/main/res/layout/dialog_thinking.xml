@@ -9,14 +9,14 @@
         android:layout_height="50dp"
         android:background="@color/bkg_color_green_light"
         android:gravity="center"
-        android:text="Thinking"
+        android:text="有所思"
         android:textColor="@color/txt_color_white"
         android:textSize="20sp"/>
 
     <EditText
         android:id="@+id/dialogthing_ed_idea"
         android:layout_width="match_parent"
-        android:hint="Say something......"
+        android:hint="......"
         android:layout_height="150dp"
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:background="@null"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/button_cancel_selector"
-            android:text="Cancel"
+            android:text="取消"
             android:textColor="@drawable/butttontext_color_selector"/>
 
         <Button
@@ -50,7 +50,7 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_weight="1"
             android:background="@drawable/button_save_selector"
-            android:text="Save"
+            android:text="保存"
             android:textColor="@color/txt_color_white"/>
     </LinearLayout>
 </LinearLayout>

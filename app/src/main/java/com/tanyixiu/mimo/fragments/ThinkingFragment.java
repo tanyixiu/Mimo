@@ -56,6 +56,7 @@ public class ThinkingFragment extends Fragment {
 
     private void initView() {
         mViewHolder = new ViewHolder(mRootView);
+        mViewHolder.mThinkBtnAdd.attachToListView(mViewHolder.mThinkListview);
         mThinkingItemLoader = new ThinkingItemLoader();
 
         mViewHolder.mThinkBtnAdd.setOnClickListener(new View.OnClickListener() {

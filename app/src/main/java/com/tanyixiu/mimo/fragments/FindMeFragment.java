@@ -4,14 +4,12 @@ package com.tanyixiu.mimo.fragments;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,8 +20,6 @@ import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.melnykov.fab.FloatingActionButton;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.tanyixiu.MimoApp;
 import com.tanyixiu.mimo.R;
 import com.tanyixiu.mimo.activities.BookEditActivity;
@@ -62,6 +58,7 @@ public class FindMeFragment extends Fragment {
 
     private void initView() {
         mViewHolder = new ViewHolder(mRootView);
+        mViewHolder.mFinemeBtnAdd.attachToListView(mViewHolder.mFindmeListview);
         mBookItemLoader = new BookItemLoader();
         mBookItemLoader.loadBookItems(new BookItemLoader.OnBookItemLoadedListener() {
             @Override
@@ -110,8 +107,8 @@ public class FindMeFragment extends Fragment {
             mItems = items;
             mContext = context;
             mListView = listView;
-            mListView.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
             mListView.setMenuCreator(mMenuCreator);
+            mListView.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
             mListView.setOnMenuItemClickListener(mOnMenuItemClickListener);
         }
 
@@ -195,7 +192,7 @@ public class FindMeFragment extends Fragment {
             } else {
                 holder = (FindMeItemViewHolder) convertView.getTag();
             }
-            holder.bindData((BookItem) getItem(position));
+            holder.bindData(position);
             return convertView;
         }
 
@@ -217,15 +214,27 @@ public class FindMeFragment extends Fragment {
 
             FindMeItemViewHolder(View view) {
                 ButterKnife.inject(this, view);
+                mFindMeTvState.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        doModifyState();
+                    }
+                });
             }
 
-            public void bindData(BookItem item) {
+            private void doModifyState() {
+                int state = (mBookItem.getState() + 1) % 3;
+                mBookItem.setState(state);
+                mBookItem.save();
+                notifyDataSetChanged();
+            }
+
+            public void bindData(int position) {
+                BookItem item = (BookItem) getItem(position);
                 if (null == item) {
                     return;
                 }
-                if (null != mBookItem && mBookItem.isEqual(item)) {
-                    return;
-                }
+
                 mBookItem = item;
                 mFindmeTvName.setText(item.getName());
                 mFindmeTvAuthor.setText(item.getAuthor());
@@ -237,6 +246,7 @@ public class FindMeFragment extends Fragment {
                 if (item.getCoverUrl().equals(oldUrl)) {
                     return;
                 }
+                this.mFindMeImgCover.setTag(item.getCoverUrl());
                 ImageLoader.getInstance().displayImage(item.getCoverUrl(), this.mFindMeImgCover);
             }
         }

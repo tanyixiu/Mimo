@@ -75,21 +75,21 @@
             android:text="Home"/>
 
         <TextView
-            android:id="@+id/main_tab_thinking"
-            style="@style/style_main_tab"
-            android:drawableTop="@drawable/ic_toys_white_24dp"
-            android:text="Thinking"/>
-
-        <TextView
             android:id="@+id/main_tab_findu"
             style="@style/style_main_tab"
             android:drawableTop="@drawable/ic_room_white_24dp"
             android:text="FindMe"/>
 
         <TextView
+            android:id="@+id/main_tab_thinking"
+            style="@style/style_main_tab"
+            android:drawableTop="@drawable/ic_toys_white_24dp"
+            android:text="Thinking"/>
+
+        <TextView
             android:id="@+id/main_tab_run"
             style="@style/style_main_tab"
-            android:drawableTop="@drawable/ic_directions_run_white_24dp"
+            android:drawableTop="@drawable/ic_palette_white_24dp"
             android:text="Play"/>
     </LinearLayout>
 

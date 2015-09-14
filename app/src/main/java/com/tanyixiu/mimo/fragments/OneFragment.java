@@ -132,10 +132,14 @@ public class OneFragment extends Fragment {
 
         private void loadFirstItem() {
             int firstId = OneItemLoader.getMaxOneItemID();
-            int curFirstId = getFirstItem().getId();
-            if (firstId == curFirstId) {
-                mRefreshView.setRefreshing(false);
-                return;
+            int curFirstId = firstId;
+            boolean isEmpty = null == mOneItems || 0 == mOneItems.size();
+            if (!isEmpty) {
+                curFirstId = getFirstItem().getId();
+                if (firstId == curFirstId) {
+                    mRefreshView.setRefreshing(false);
+                    return;
+                }
             }
             isLoading = true;
             mOneItemLoader.loadOneItem(curFirstId + 1, new OnOneItemLoadedListener() {
@@ -153,7 +157,7 @@ public class OneFragment extends Fragment {
 
         private void loadNextItem() {
             int curMinId = getEndItem().getId();
-            if (1 == curMinId) {
+            if (1 >= curMinId) {
                 return;
             }
             isLoading = true;
